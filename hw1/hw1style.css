@@ -1,0 +1,23 @@
+
+h1{
+    text-align: center;
+  }
+
+.q1 table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 15px;
+    text-align: center;
+  }
+
+.q2 input{
+    border-radius: 20px;
+    border-color: rgb(220,220,220);
+    border-style: solid;
+    width: 400px;
+    height: 30px;
+}
+
+div{
+    margin-bottom: 50px;
+}
