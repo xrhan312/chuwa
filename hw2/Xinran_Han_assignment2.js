@@ -14,9 +14,9 @@ const itemsObject = [
   { quantity: 5, price: 400 },
 ];
 
-const itemsDouble = itemsObject.map((element) => ({
-  quantity: element.quantity * 2,
-  element: element.price * 2,
+const itemsDouble = itemsObject.map(({ quantity, price }) => ({
+  quantity: quantity * 2,
+  element: price * 2,
 }));
 
 const itemsFilter = itemsObject.filter((element) => {
@@ -49,8 +49,8 @@ const expectedReturnString =
 const process = string
   .trim()
   .toLowerCase()
-  .replace(/[^a-z0-9\s]/g, " ")
-  .replace(/\s+/g, " ");
+  .replace(/[^a-z]/g, " ");
+// .replace(/\s+/g, " ");
 
 console.log(process);
 console.log(expectedReturnString === process);
@@ -87,10 +87,11 @@ const expectedReturnArray = [
 ];
 
 function mergeArrays(a, b) {
-  const result = [];
-  a.forEach((element) => {
-    result.push({ uuid: element.uuid, role: null, name: element.name });
-  });
+  const result = a.map((element) => ({
+    uuid: element.uuid,
+    role: null,
+    name: element.name,
+  }));
 
   b.forEach((element) => {
     const index = result.findIndex((ele) => {
@@ -103,10 +104,7 @@ function mergeArrays(a, b) {
     }
   });
 
-  result.sort(function (a, b) {
-    return a.uuid - b.uuid;
-  });
-  return result;
+  return result.sort((a, b) => a.uuid - b.uuid);
 }
 
 console.log(mergeArrays(first, second));
